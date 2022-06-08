@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_learn_project/101/list_view_builder.dart';
 import 'package:flutter_learn_project/101/list_view_learn.dart';
 import 'package:flutter_learn_project/101/navigation_learn.dart';
+import 'package:flutter_learn_project/202/tab_learn.dart';
 import 'package:flutter_learn_project/demos/color_demos_view.dart';
 import 'package:flutter_learn_project/demos/color_life_cycle_view.dart';
 import 'package:flutter_learn_project/demos/my_collections_view.dart';
@@ -22,11 +23,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
           tabBarTheme: const TabBarTheme(
-            unselectedLabelColor: Colors.red,
             indicatorSize: TabBarIndicatorSize.label,
           ),
-          bottomAppBarTheme:
-              const BottomAppBarTheme(shape: CircularNotchedRectangle()),
+
           progressIndicatorTheme:
               const ProgressIndicatorThemeData(color: Colors.white),
           listTileTheme:
@@ -54,7 +53,7 @@ class MyApp extends StatelessWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
           )),
-      home: const NavigationLearn(),
+      home: const TabLearnView(),
     );
   }
 }
