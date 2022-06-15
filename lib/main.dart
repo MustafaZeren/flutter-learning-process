@@ -14,6 +14,7 @@ import 'package:flutter_learn_project/demos/my_collections_view.dart';
 import '202/some_spinkits_examples.dart';
 import '202/service/service_post_learn_view.dart';
 import '202/theme/light_theme.dart';
+import '202/widget_size_enum_learn_view.dart';
 
 void main() {
   runApp(const MyApp());
