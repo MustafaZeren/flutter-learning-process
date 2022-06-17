@@ -11,6 +11,7 @@ import 'package:flutter_learn_project/demos/color_demos_view.dart';
 import 'package:flutter_learn_project/demos/color_life_cycle_view.dart';
 import 'package:flutter_learn_project/demos/my_collections_view.dart';
 
+import '202/oop_learn_view.dart';
 import '202/some_spinkits_examples.dart';
 import '202/service/service_post_learn_view.dart';
 import '202/theme/light_theme.dart';
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
       //       backgroundColor: Colors.transparent,
       //       elevation: 0,
       //     )),
-      home: const ThemeLearnView(),
+      home: const OOPLearnView(),
     );
   }
 }
