@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_learn_project/101/list_view_builder.dart';
 import 'package:flutter_learn_project/101/list_view_learn.dart';
 import 'package:flutter_learn_project/101/navigation_learn.dart';
+import 'package:flutter_learn_project/202/cache/shared_learn_cache.dart';
 import 'package:flutter_learn_project/202/package_learn_view.dart';
 import 'package:flutter_learn_project/202/service/service_learn_view.dart';
 import 'package:flutter_learn_project/202/state_manage/state_manage_learn_view.dart';
@@ -66,7 +67,7 @@ class MyApp extends StatelessWidget {
       //       backgroundColor: Colors.transparent,
       //       elevation: 0,
       //     )),
-      home: const FormLearnView(),
+      home: const SharedLearn(),
     );
   }
 }

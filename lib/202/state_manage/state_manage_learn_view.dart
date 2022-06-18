@@ -23,4 +23,4 @@ class _StateManageLearnViewState extends StateLearnViewModel {
       ),
     );
   }
-}
+} 

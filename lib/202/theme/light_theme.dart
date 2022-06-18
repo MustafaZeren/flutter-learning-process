@@ -7,15 +7,17 @@ class LightTheme {
   LightTheme() {
     theme = ThemeData(
       appBarTheme: const AppBarTheme(
+        color: Colors.green,
           shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
       )),
-      scaffoldBackgroundColor: Colors.white24,
+      scaffoldBackgroundColor: Colors.white70,
       floatingActionButtonTheme:
           const FloatingActionButtonThemeData(backgroundColor: Colors.green),
       buttonTheme: ButtonThemeData(
           colorScheme: ColorScheme.light(
-              onPrimary: Colors.purple, onSecondary: _lightColor.blueMenia)),
+              onPrimary: _lightColor.purple,
+              onSecondary: _lightColor.blueMenia)),
       colorScheme: const ColorScheme.light(),
       checkboxTheme: CheckboxThemeData(
         fillColor: MaterialStateProperty.all(Colors.green),
@@ -28,6 +30,7 @@ class LightTheme {
 }
 
 class _LightColor {
-  final Color _textColor = Color.fromARGB(255, 149, 177, 24);
+  final Color _textColor = Colors.black;
   final Color blueMenia = const Color.fromARGB(95, 188, 248, 1);
+  final Color purple = Colors.purple;
 }
