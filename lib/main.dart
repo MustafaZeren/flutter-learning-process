@@ -14,6 +14,8 @@ import 'package:flutter_learn_project/demos/color_life_cycle_view.dart';
 import 'package:flutter_learn_project/demos/my_collections_view.dart';
 
 import '202/animated_learn_view.dart';
+import '202/cache/secure_context/secure_context_learn.dart';
+import '202/cache/shared_list_cache.dart';
 import '202/form_learn_view.dart';
 import '202/oop_learn_view.dart';
 import '202/some_spinkits_examples.dart';
@@ -67,7 +69,7 @@ class MyApp extends StatelessWidget {
       //       backgroundColor: Colors.transparent,
       //       elevation: 0,
       //     )),
-      home: const SharedLearn(),
+      home: const SharedContextLearn(),
     );
   }
 }

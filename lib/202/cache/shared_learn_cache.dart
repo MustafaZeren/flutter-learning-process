@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_learn_project/202/cache/shared_manager.dart';
+import 'package:flutter_learn_project/202/cache/user_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedLearn extends StatefulWidget {
@@ -10,17 +12,26 @@ class SharedLearn extends StatefulWidget {
 
 class _SharedLearnState extends LoadingStatefull<SharedLearn> {
   int _currentValue = 0;
+  late final SharedManager _manager;
 
   @override
   void initState() {
     super.initState();
+    _manager = SharedManager();
+    _initialize();
+  }
+
+  Future<void> _initialize() async {
+    changeLoading();
+    await _manager.init();
+    changeLoading();
     getDefaultValues();
   }
 
   Future<void> getDefaultValues() async {
-    final prefs = await SharedPreferences.getInstance();
-    final int? counter = prefs.getInt('counter');
-    _onChangeValue(counter.toString());
+    // final prefs = await SharedPreferences.getInstance();
+    // final int? counter = prefs.getInt('counter');
+    _onChangeValue(_manager.getString(SharedKeys.counter) ?? '');
   }
 
   void _onChangeValue(String value) {
@@ -39,25 +50,31 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
     return Scaffold(
         appBar: AppBar(
           title: Center(child: Text(_currentValue.toString())),
-          actions: [
-            isLoading
-                ? Center(
-                    child: CircularProgressIndicator(
-                      color: Theme.of(context).scaffoldBackgroundColor,
-                    ),
-                  )
-                : const SizedBox.shrink()
-          ],
+          actions: [_loading(context)],
         ),
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [_saveValueButton(), _removeValueButton()],
         ),
-        body: TextField(
-          onChanged: (value) {
-            _onChangeValue(value);
-          },
+        body: Column(
+          children: [
+            TextField(
+              onChanged: (value) {
+                _onChangeValue(value);
+              },
+            ),
+          ],
         ));
+  }
+
+  SingleChildRenderObjectWidget _loading(BuildContext context) {
+    return isLoading
+        ? Center(
+            child: CircularProgressIndicator(
+              color: Theme.of(context).scaffoldBackgroundColor,
+            ),
+          )
+        : const SizedBox.shrink();
   }
 
   Padding _removeValueButton() {
@@ -67,8 +84,8 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
         child: const Icon(Icons.delete_outline),
         onPressed: () async {
           changeLoading();
-          final prefs = await SharedPreferences.getInstance();
-          await prefs.remove('counter');
+          await _manager.removeItem(SharedKeys.counter);
+
           changeLoading();
         },
       ),
@@ -82,12 +99,27 @@ class _SharedLearnState extends LoadingStatefull<SharedLearn> {
         child: const Icon(Icons.save_outlined),
         onPressed: () async {
           changeLoading();
-          final prefs = await SharedPreferences.getInstance();
-          await prefs.setInt('counter', _currentValue);
+          await _manager.saveString(
+              SharedKeys.counter, _currentValue.toString());
           changeLoading();
         },
       ),
     );
+  }
+}
+
+
+
+class UserItems {
+  late final List<User> users;
+  UserItems() {
+    users = [
+      User('mz1', '23', 'mz37.dev'),
+      User('mz2', '23', 'mz37.dev'),
+      User('mz3', '23', 'mz37.dev'),
+      User('mz4', '23', 'mz37.dev'),
+      User('mz5', '23', 'mz37.dev')
+    ];
   }
 }
 
