@@ -7,13 +7,13 @@ class LightTheme {
   LightTheme() {
     theme = ThemeData(
       appBarTheme: const AppBarTheme(
-        color: Colors.green,
+          color: Color.fromARGB(255, 78, 33, 92),
           shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
-      )),
-      scaffoldBackgroundColor: Colors.white70,
-      floatingActionButtonTheme:
-          const FloatingActionButtonThemeData(backgroundColor: Colors.green),
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(32)),
+          )),
+      scaffoldBackgroundColor: Colors.white,
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Color.fromARGB(255, 228, 154, 250)),
       buttonTheme: ButtonThemeData(
           colorScheme: ColorScheme.light(
               onPrimary: _lightColor.purple,
